@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <style>
+        body {
+            background: #eef1f7;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #4a76fd, #6a8bff);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #3b63e0, #5978e6);
+            transform: translateY(-2px);
+        }
+
+        .question-card {
+            background: #f9fbff;
+            padding: 18px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            border: 1px solid #e3e9f3;
+            transition: 0.2s ease;
+        }
+
+        .question-card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-card h3 {
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .option {
+            background: #ffffff;
+            padding: 12px;
+            border-radius: 8px;
+            display: block;
+            margin: 10px 0;
+            border: 1px solid #dce3ef;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+
+        .option:hover {
+            background: #eef3ff;
+            border-color: #b8c7ff;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+
+</html>

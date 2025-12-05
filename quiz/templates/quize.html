@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>📝 Quiz App</h1>
+<p style="text-align:center;">Choose the correct answers and submit.</p>
+<br>
+
+<form method="POST">
+    {% csrf_token %}
+
+    {% for q in questions %}
+    <div class="question-card">
+        <h3>Q{{ forloop.counter }}. {{ q.question_text }}</h3>
+
+        {% for ans in q.answer_set.all %}
+        <label class="option">
+            <input type="radio" name="{{ q.id }}" value="{{ ans.id }}" required>
+            {{ ans.answer_text }}
+        </label>
+        {% endfor %}
+    </div>
+    {% endfor %}
+
+    <div style="text-align:center; margin-top: 30px;">
+        <button type="submit" class="btn">Submit Quiz</button>
+    </div>
+</form>
+
+{% endblock %}
