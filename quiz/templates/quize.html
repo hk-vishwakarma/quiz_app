@@ -2,11 +2,11 @@
 
 {% block content %}
 
-<h1>📝 Quiz App</h1>
+<h1>Quiz App</h1>
 <p style="text-align:center;">Choose the correct answers and submit.</p>
 <br>
 
-<form method="POST">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     {% for q in questions %}
