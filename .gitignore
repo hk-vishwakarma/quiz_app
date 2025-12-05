@@ -1,0 +1,55 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# VSCode
+.vscode/
+
+# PyCharm
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Migrations (optional — only ignore if you don't want to track them)
+# **Do NOT ignore migrations if working in team**
+# Uncomment if you want:
+# */migrations/*
+# !*/migrations/__init__.py
+
+# Byte-compiled / optimized / DLL files
+*.so
+*.dll
+*.dylib
+
+# Cache
+*.cache
+*.pytest_cache/
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Node (if you use frontend tools later)
+node_modules/
