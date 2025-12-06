@@ -11,14 +11,27 @@
 
     {% for q in questions %}
     <div class="question-card">
-        <h3>Q{{ forloop.counter }}. {{ q.question_text }}</h3>
+        <h3>Q{{ forloop.counter }}. {{ q.question }}</h3>
 
-        {% for ans in q.answer_set.all %}
         <label class="option">
-            <input type="radio" name="{{ q.id }}" value="{{ ans.id }}" required>
-            {{ ans.answer_text }}
+            <input type="radio" name="{{ q.id }}" value="{{ q.option1 }}" required>
+            {{ q.option1 }}
         </label>
-        {% endfor %}
+
+        <label class="option">
+            <input type="radio" name="{{ q.id }}" value="{{ q.option2 }}" required>
+            {{ q.option2 }}
+        </label>
+
+        <label class="option">
+            <input type="radio" name="{{ q.id }}" value="{{ q.option3 }}" required>
+            {{ q.option3 }}
+        </label>
+
+        <label class="option">
+            <input type="radio" name="{{ q.id }}" value="{{ q.option4 }}" required>
+            {{ q.option4 }}
+        </label>
     </div>
     {% endfor %}
 
@@ -26,5 +39,6 @@
         <button type="submit" class="btn">Submit Quiz</button>
     </div>
 </form>
+
 
 {% endblock %}

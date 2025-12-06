@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Quiz Categories</h2>
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top:20px;">
+    {% for category in categories %}
+    <div style="
+            background: #f3f3f3; 
+            padding: 15px; 
+            border-radius: 10px; 
+            width: 200px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+
+        <h3>{{ category.name }}</h3>
+        <p>{{ category.description }}</p>
+
+        <a href="{% url 'quize' category.id %}" style="display:block; margin-top:10px; text-align:center; 
+                padding: 8px 10px; background: #333; color:white; border-radius:5px;">
+            Start Quiz
+        </a>
+    </div>
+    {% empty %}
+    <p>No categories found.</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

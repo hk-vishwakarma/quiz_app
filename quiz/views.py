@@ -5,21 +5,26 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
-def quiz_home(request):
-    questions = Question.objects.all()
+
+def home(request):
+    category = Category.objects.all()
+    return render(request, "index.html", {'categories' : category})
+
+
+def quiz_home(request, category_id):
+    category = Category.objects.get(id = category_id)
+    questions = Question.objects.filter(category = category)
 
     if request.method == "POST":
         score = 0
         total = questions.count()
 
         for q in questions:
-            selected_id = request.POST.get(str(q.id))
-            if selected_id:
-                answer = Answer.objects.get(id = selected_id)
-                if answer.is_true:
-                    score+=1
+            selected_option = request.POST.get(str(q.id))
+            if selected_option == q.answer:
+                score+=1
         
-        return render(request, "result.html", context={'score':score, 'total':total})
+        return render(request, "result.html", context={'score':score, 'total':total, 'category':category})
 
 
     return render(request, "quize.html", context={'questions' : questions})

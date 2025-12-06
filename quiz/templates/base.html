@@ -96,10 +96,109 @@
             border: none;
             border-top: 1px solid #eee;
         }
+
+            /* Header Styling */
+        .main-header {
+            background: #2a2d34;
+            padding: 12px 30px;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo h2 {
+            margin: 0;
+            font-size: 26px;
+            letter-spacing: 1px;
+            color: blue;
+        }
+
+        .navbar a {
+            color: #e8e8e8;
+            margin-left: 18px;
+            font-size: 18px;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: #4a76fd;
+            transform: translateY(-2px);
+        }
+
+        /* Buttons inside nav */
+        .btn-nav {
+            padding: 8px 16px;
+            background: #4a76fd;
+            border-radius: 6px;
+            color: white !important;
+            font-weight: 500;
+        }
+
+        .btn-nav:hover {
+            background: #395fe0;
+        }
+
+        /* Sign Up Button – Highlighted */
+        .btn-nav.signup {
+            background: #28a745;
+        }
+
+        .btn-nav.signup:hover {
+            background: #1f8a39;
+        }
+
+        /* Logout Red Style */
+        .btn-nav.logout {
+            background: #e63946;
+        }
+
+        .btn-nav.logout:hover {
+            background: #c92734;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            .navbar a {
+                margin-left: 12px;
+                margin-top: 8px;
+            }
+        }
+
     </style>
 </head>
 
 <body>
+
+    <header class="main-header">
+        <div class="logo">
+            <h2>Quiz App</h2>
+        </div>
+    
+        <nav class="navbar">
+            <a href="/">Home</a>
+            <!-- <a href="/quiz/">Start Quiz</a> -->
+            <a href="/history/">My Scores</a>
+    
+            {% if user.is_authenticated %}
+            <a href="/logout/" class="btn-nav logout">Logout</a>
+            {% else %}
+            <a href="/login/" class="btn-nav">Sign In</a>
+            <a href="/signup/" class="btn-nav signup">Sign Up</a>
+            {% endif %}
+        </nav>
+    </header>
+
+
 
     <div class="container">
         {% block content %}{% endblock %}
