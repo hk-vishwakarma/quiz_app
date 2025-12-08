@@ -3,6 +3,7 @@ from .models import *
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -23,6 +24,17 @@ def quiz_home(request, category_id):
             selected_option = request.POST.get(str(q.id))
             if selected_option == q.answer:
                 score+=1
+        
+
+        # if user is login then save its score
+        if request.user.is_authenticated:
+            UserScore.objects.create(
+                user = request.user,
+                category = category,
+                score = score,
+                total = total
+
+            )
         
         return render(request, "result.html", context={'score':score, 'total':total, 'category':category})
 
@@ -89,3 +101,9 @@ def logout_view(request):
     logout(request=request)
     return redirect('home')
 
+
+# to show score
+@login_required(login_url="signin")
+def my_score(request):
+    score = UserScore.objects.filter(user = request.user).order_by('-date')
+    return render(request, "my_score.html", {'scores':score})

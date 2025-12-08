@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class=" mt-5">
+
+    <h2 class="text-center mb-4 fw-bold">Your Previous Scores</h2>
+
+    {% if scores %}
+    {% for score in scores %}
+    <div class="score-card">
+
+        <!-- Category -->
+        <div class="score-item category">
+            <strong>{{ score.category.name }}</strong>
+        </div>
+
+        <!-- Score -->
+        <div class="score-item">
+            <strong>Score:</strong> {{ score.score }} / {{ score.total }}
+        </div>
+
+        <!-- Date -->
+        <div class="score-item date">
+            <strong>Date:</strong> {{ score.date|date:"M d, Y • H:i" }}
+        </div>
+
+        <!-- Retry -->
+        <div class="score-item">
+            <a href="{% url 'quize' score.category.id %}" class="btn retry-btn">
+                Retry Quiz
+            </a>
+        </div>
+
+    </div>
+    {% endfor %}
+    {% else %}
+    <p class="text-center text-muted">No previous scores found.</p>
+    {% endif %}
+</div>
+
+<style>
+    .score-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 20px;
+        border-radius: 15px;
+        background: #f7faff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        margin-bottom: 18px;
+    }
+
+    .score-item {
+        font-size: 16px;
+        color: #444;
+    }
+
+    .category {
+        font-size: 18px;
+        font-weight: 600;
+        min-width: 120px;
+    }
+
+    .retry-btn {
+        background-color: #5271ff;
+        color: white;
+        padding: 8px 18px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: 0.3s ease;
+    }
+
+    .retry-btn:hover {
+        background-color: #3558ff;
+    }
+</style>
+{% endblock %}
