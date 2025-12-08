@@ -11,7 +11,7 @@
 
     {% for q in questions %}
     <div class="question-card">
-        <h3>Q{{ forloop.counter }}. {{ q.question }}</h3>
+        <h3>Q{{ forloop.counter }}. {{ q.question_text }}</h3>
 
         <label class="option">
             <input type="radio" name="{{ q.id }}" value="{{ q.option1 }}" required>
