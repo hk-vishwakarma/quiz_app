@@ -51,9 +51,8 @@ def sign_up_view(request):
 
 
         # to check that user already exists or not
-        user = User.objects.get(username = username)
-        if user.exists() :
-            messages.error(request, "username already exists !")
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists!")
             return redirect('register')
         
         # check both password is same
@@ -68,8 +67,8 @@ def sign_up_view(request):
         )
 
         messages.success(request=request, message="Register successfully !")
-        login(request, user)
-        return redirect('home')
+        # login(request, user)
+        return redirect('signin')
     
     return render(request, "signup.html")
 
